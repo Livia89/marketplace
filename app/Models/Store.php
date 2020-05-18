@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Model;
 class Store extends Model
 {
     // protected $table = 'lojas'; - Caso quisesse ter uma tabela com nome diferente do normal (Stores) mas não é padrão.
+    protected $fillable = ['name', "description", "phone", "mobile_phone", "slug"];
 
     public function user(){
         // Uma loja pertence a um usuario

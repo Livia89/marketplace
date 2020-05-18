@@ -1,0 +1,103 @@
+<?php
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/model', function (){
+    // $products = \App\Models\Product::all(); // select * from products
+
+//    $user = new \App\User();
+    /*$user = \App\User::find(2);
+    $user->name = "Bruninha";
+    $user->save(); */
+
+    // \App\User::all(); // retorna todos os registos
+    // \App\User::find(2); // retorna o registo pelo id
+    // \App\User::where("name", 'Bruninha')->first(); // retorna o primeiro registo encontrado
+    // \App\User::paginate(10); - paginar dados com laravel
+
+    // Mass assigment - Atribuição em massa
+
+//    $user = \App\User::create([
+//        'name' => 'Lucila',
+//        'email' => 'lucila@gmail.com',
+//        'password' => bcrypt('98765431')
+//
+//    ]);
+
+  /*  $user = \App\User::find(42);
+    $user->update([
+        'name' => 'Joazinha'
+    ]);
+*/
+    //return \App\User::all();
+
+    // Como eu faria para pegar a loja de um usuario
+    $user = \App\User::find(4);
+
+    //return $user->store; // Quando chama como atributo "o método", se for 1:1 o laravel devolve um objeto com todas as informações e se 1:N/N:N devolve uma coleção. Para salvar no BD ou fazer condições tem que chamar como método $user->store()
+
+    // Como eu faria para pegar produtos de uma loja
+    $loja = \App\Models\Store::find(1);
+    // $loja->products; | $loja->products()->where('id',9)->get();
+
+    // Pegar todas as lojas de uma categoria?
+//    $categoria = \App\Models\Category::find(1);
+//    $categoria->products;
+
+    // Criar uma loja para um usuario
+//    $user = \App\User::find(1);
+//    $store = $user->store()->create([
+//        'name' => 'loja teste',
+//        'description' => 'loja teste de produtos de informática',
+//        'mobile_phone' => 'XX-XXXXX-XXXX',
+//        'phone' => 'XX-XXXXX-XXXX',
+//        'slug' => 'loja-teste'
+//    ]);
+
+
+    // Criar um produto para uma loja
+//    $store = \App\Models\Store::find(41);
+//    $product = $store->products()->create([
+//        'name' => 'Notebook Dell',
+//        "description" => 'CORE I5 10GB',
+//        "body" => 'Qualquer coisa...',
+//        "price" => '2999.99',
+//        "slug" => 'notebook-dell'
+//    ]);
+    // Criar uma categoria
+//    \App\Models\Category::create([
+//        'name'=> 'Games',
+//        'description' => null,
+//        'slug'=> 'games'
+//    ]);
+//
+//    \App\Models\Category::create([
+//        'name'=> 'Notebooks',
+//        'description' => null,
+//        'slug'=> 'notebooks'
+//    ]);
+    // Adicionar um produto para uma categoria ou vice-versa
+    $product = \App\Models\Product::find(41);
+    dd($product->categories);
+   // dd($product->categories()->attach([1])); // -> adiciona uma(s) categoria(s) a um produto
+    //dd($product->categories()->detach([1])); // -> remove a(s) categoria(s) a um produto
+    //dd($product->categories()->sync([2])); // sync -> se não houver ligação nenhuma (de N:N), o sync adiciona tudo o que passado é array pela ligação para a BD p.e: [(1,2) - adicionou na BD 1 e 2], [(1) - excluiu a posição 2 da bd] faz essa sincronização
+//    dd(\App\Models\Category::all());
+//
+//    return \App\User::all();
+
+
+});

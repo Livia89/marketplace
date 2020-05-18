@@ -8,16 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 /* Relações
     1:1 - Um para um (Usuário e loja) - hasOne e belongsTo - tem um e pertence a
     1:N - Um para muitos (Loja e produtos) | hasMany e belongsTo - Tem muitos e pertence a
-    N:N - Um para um (Produtos e categorias) | belongsToMany - Pertence a muitos
+    N:N - muitos para muitos (Produtos e categorias) | belongsToMany - Pertence a muitos
 */
 
 class Product extends Model
 {
+    protected $fillable = ['name', "description", "body", "price", "slug"];
+
     public function store(){
-        return $this->belongsTo(Store::class, 'store_id');
+        return $this->belongsTo(Store::class);
     }
 
     public function categories(){
-        return $this->belongsToMany(Product::class); // Para N:N (belongsToMany) o laravel procura o nome da tabela em ordem alfabética, se não tiver em ordem passar o nome correto no segundo parametro da belongsToMany. p.e: $this->belongsToMany(Product::class, products_categories);
+        return $this->belongsToMany(Category::class); // Para N:N (belongsToMany) o laravel procura o nome da tabela em ordem alfabética, se não tiver em ordem passar o nome correto no segundo parametro da belongsToMany. p.e: $this->belongsToMany(Product::class, products_categories);
     }
 }

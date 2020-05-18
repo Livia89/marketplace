@@ -21,7 +21,13 @@ class UsersTableSeeder extends Seeder
 ////            ]
 ////        );
 
-        factory(\App\User::class, 40)->create();
+        // Na criação de cada utilizador cria uma loja
+        // Método save trabalha com objetos e o create com arrays
+        factory(\App\User::class, 40)->create()->each(function ($user){
+            // Cria 40 users e na criação de cada user cria tb uma loja associada com os dados fakes da factory. O make devolve uma instancia do objeto com os dados do fake
+
+            $user->store()->save(factory(\App\Models\Store::class)->make());
+        });
 
     }
 
