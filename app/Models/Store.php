@@ -5,13 +5,6 @@ namespace App\Models;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 
-<<<<<<< HEAD
-class Store extends Model
-{
-    protected $fillable = ['name', 'description', 'phone', 'mobile_phone', 'slug'];
-
-    public function user(){
-=======
 /* Relações
     1:1 - Um para um (Usuário e loja) - hasOne e belongsTo - tem um e pertence a
     1:N - Um para muitos (Loja e produtos) | hasMany e belongsTo - Tem muitos e pertence a
@@ -25,18 +18,13 @@ class Store extends Model
 
     public function user(){
         // Uma loja pertence a um usuario
->>>>>>> 3df03da3ebe39c7378f7cbafe7793a651828bf7b
         return $this->belongsTo(User::class);
     }
 
     public function products(){
         return $this->hasMany(Product::class);
     }
-<<<<<<< HEAD
-}
-=======
 
 }
 
 
->>>>>>> 3df03da3ebe39c7378f7cbafe7793a651828bf7b

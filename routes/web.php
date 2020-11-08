@@ -16,14 +16,12 @@ Route::get('/', function () {
 });
 
 Route::get('/model', function (){
-<<<<<<< HEAD
 //    $user = \App\User::find(2);
     $loja = \App\Models\Store::find(1);
     
     return ($loja->products);
-=======
-    $user = \App\User::find(4);
 });
+
 
 // prefixo (da url), namespace (pasta da função de callback [Admin\\StoreController@index])
 Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function(){
@@ -37,5 +35,4 @@ Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function(){
         Route::get('/destroy/{store}', 'StoreController@destroy')->name('destroy');
     });
 
->>>>>>> 3df03da3ebe39c7378f7cbafe7793a651828bf7b
 });
