@@ -18,5 +18,6 @@ Route::get('/', function () {
 Route::get('/model', function (){
 //    $user = \App\User::find(2);
     $loja = \App\Models\Store::find(1);
+    
     return ($loja->products);
 });
