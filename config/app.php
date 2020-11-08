@@ -39,7 +39,11 @@ return [
     |
     */
 
+<<<<<<< HEAD
     'debug' => env('APP_DEBUG', false),
+=======
+    'debug' => (bool) env('APP_DEBUG', false),
+>>>>>>> 3df03da3ebe39c7378f7cbafe7793a651828bf7b
 
     /*
     |--------------------------------------------------------------------------

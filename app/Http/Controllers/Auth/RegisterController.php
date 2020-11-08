@@ -4,7 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+<<<<<<< HEAD
 use App\Models\User;
+=======
+use App\User;
+>>>>>>> 3df03da3ebe39c7378f7cbafe7793a651828bf7b
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;

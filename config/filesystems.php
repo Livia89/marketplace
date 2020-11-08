@@ -62,6 +62,10 @@ return [
             'region' => env('AWS_DEFAULT_REGION'),
             'bucket' => env('AWS_BUCKET'),
             'url' => env('AWS_URL'),
+<<<<<<< HEAD
+=======
+            'endpoint' => env('AWS_ENDPOINT'),
+>>>>>>> 3df03da3ebe39c7378f7cbafe7793a651828bf7b
         ],
 
     ],
