@@ -43,6 +43,11 @@
                 </tr>
             </tbody>
         </table>
+        <hr>
+        <div class="col-md-12">
+            <a href="#" class="btn btn-lg btn-success pull-right">Concluir compra</a>
+            <a href="{{route('cart.cancel')}}" class="btn btn-lg btn-danger pull-left">Cancelar compra</a>
+        </div>
         @else 
             <div class="alert alert-warning">Carrinho vazio</div>
         @endif
