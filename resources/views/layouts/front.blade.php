@@ -55,6 +55,16 @@
                         <li class="nav-item">
                             <span class="nav-link">{{auth()->user()->name}}</span>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('cart.index') }}" class="nav-link">
+                                @if (session()->has('cart'))
+                                    <span class="badge badge-danger">{{count(session()->get('cart'))}} <i class="fa fa-shopping-cart"></i></span>
+                                    <!-- <span class="badge-danger">{{array_sum(array_column(session()->get('cart'), 'amount'))}}</span> -->
+                                @endif
+                                
+                                
+                            </a>
+                        </li>
                     </ul>
                 </div>
         @endauth
