@@ -21,8 +21,18 @@ class CartController extends Controller
         
         // check if already start cart session 
         if(session()->has("cart")){
-            // yes - add products in session [push -> append]
-            session()->push('cart', $product);
+            
+            $products = session()->get('cart');
+            $productsSlugs = array_column($products, 'slug');
+
+            if(in_array($product['slug'], $productsSlugs)){
+                $products = $this->productIncrement($product['slug'], $product['amount'], $products); 
+                session()->put('cart', $products);
+            }else{
+                // yes - add products in session [push -> append]
+                session()->push('cart', $product);
+            }
+            
         }else{
             // no - create session to first product [put -> create]
             $products[] = $product;
@@ -57,5 +67,18 @@ class CartController extends Controller
         flash('A sua compra foi cancelada')->success();
         return redirect()->route('cart.index');
     
+    }
+
+    // Não repetir o produto no carrinho
+    public function productIncrement($slug, $amount,  $products)
+    {
+        // Altera cada linha do array
+        $products = array_map(function($line) use ($slug, $amount){
+            if($slug == $line['slug']){
+                $line['amount'] += $amount;
+            }
+            return $line;
+        }, $products);
+        return $products;
     }
 }

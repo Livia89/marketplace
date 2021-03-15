@@ -40,11 +40,11 @@
                     <li class="nav-item @if(request()->is('admin/categories*')) active @endif">
                         <a class="nav-link" href="{{route('admin.categories.index')}}">Categorias</a>
                     </li>
+                    @auth
                 </ul> --}}
-                @auth
                 <div class="my-2 my-lg-0">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link" href="#" onclick="event.preventDefault();
                                                                   document.querySelector('form.logout').submit(); ">Sair</a>
 
@@ -54,11 +54,11 @@
                         </li>
                         <li class="nav-item">
                             <span class="nav-link">{{auth()->user()->name}}</span>
-                        </li>
+                        </li> --}}
                         <li class="nav-item">
-                            <a href="{{ route('cart.index') }}" class="nav-link">
+                            <a href="{{ route('cart.index') }}" class="nav-link ">
                                 @if (session()->has('cart'))
-                                    <span class="badge badge-danger">{{count(session()->get('cart'))}} <i class="fa fa-shopping-cart"></i></span>
+                                    <span class="badge badge-danger">{{count(session()->get('cart'))}} <i class="fa fa-shopping-cart"></i> </span>
                                     <!-- <span class="badge-danger">{{array_sum(array_column(session()->get('cart'), 'amount'))}}</span> -->
                                 @endif
                                 
@@ -67,7 +67,7 @@
                         </li>
                     </ul>
                 </div>
-        @endauth
+        {{-- @endauth --}}
 
     </div>
 </nav>
