@@ -58,6 +58,9 @@
                             <span class="nav-link">{{auth()->user()->name}}</span>
                         </li> --}}
                         <li class="nav-item">
+                            <a href="{{route('login')}}" class="nav-link"><i class="far fa-user"></i> Login </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{ route('cart.index') }}" class="nav-link ">
                                 <span class="badge badge-danger">
                                 @if (session()->has('cart'))

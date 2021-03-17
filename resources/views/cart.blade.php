@@ -1,5 +1,13 @@
-@extends('layouts.front')
+@php
+    $view = "layouts.app";
+@endphp
+@if (!auth::check())
+    @php
+        $view = "layouts.front";
+    @endphp
+@endif
 
+@extends($view)
 @section('content')
 
     <div class="row">

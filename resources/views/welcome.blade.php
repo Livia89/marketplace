@@ -8,6 +8,7 @@
 @endif
 
 @extends($view)
+
 @section('content')
 <div class="row mb-4">
     @foreach ($products as $key => $p)
