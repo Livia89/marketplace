@@ -1,4 +1,11 @@
-@extends('layouts.front')
+@auth
+    @extends('layouts.app')
+@endauth
+
+@guest
+    @extends('layouts.front')
+@endguest
+
 
 @section('content')
 <div class="row mb-4">
