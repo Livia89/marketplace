@@ -1,12 +1,13 @@
-@auth
-    @extends('layouts.app')
-@endauth
+@php
+    $view = "layouts.app";
+@endphp
+@if (!auth::check())
+    @php
+        $view = "layouts.front";
+    @endphp
+@endif
 
-@guest
-    @extends('layouts.front')
-@endguest
-
-
+@extends($view)
 @section('content')
 <div class="row mb-4">
     @foreach ($products as $key => $p)
