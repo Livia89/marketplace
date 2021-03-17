@@ -57,10 +57,12 @@
                         </li> --}}
                         <li class="nav-item">
                             <a href="{{ route('cart.index') }}" class="nav-link ">
+                                <span class="badge badge-danger">
                                 @if (session()->has('cart'))
-                                    <span class="badge badge-danger">{{count(session()->get('cart'))}} <i class="fa fa-shopping-cart"></i> </span>
+                                    {{count(session()->get('cart'))}} 
                                     <!-- <span class="badge-danger">{{array_sum(array_column(session()->get('cart'), 'amount'))}}</span> -->
                                 @endif
+                                <i class="fa fa-shopping-cart"></i> </span>
                                 
                                 
                             </a>

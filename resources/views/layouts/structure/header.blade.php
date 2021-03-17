@@ -24,6 +24,18 @@
               <div class="d-flex">
                   <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
+                      
+                      <a href="{{ route('cart.index') }}" class="nav-link ">
+                        <span class="badge badge-danger">
+                        @if (session()->has('cart'))
+                            {{count(session()->get('cart'))}} 
+                            <!-- <span class="badge-danger">{{array_sum(array_column(session()->get('cart'), 'amount'))}}</span> -->
+                        @endif
+                        <i class="fa fa-shopping-cart"></i> </span>      
+                      </a>
+
+                    </li>
+                    <li class="nav-item">
                       <span class="nav-link">{{auth()->user()->name}}</span>
                     </li>
 
