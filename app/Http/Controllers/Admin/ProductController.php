@@ -135,6 +135,8 @@ class ProductController extends Controller
         $product->categories()->detach();
         $product->images()->delete();
         $product->delete();
+
+        /*TODO - Falta remover as imagens das pastas */ 
         
         flash("Produto excluido com sucesso")->success();
         return redirect()->route('admin.products.index');
