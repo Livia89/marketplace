@@ -23,6 +23,11 @@ Route::prefix('cart')->name('cart.')->group(function(){
 
 });
 
+
+Route::prefix('checkout')->name('checkout.')->group(function(){
+    Route::get('/', 'CheckoutController@index')->name('index');
+});
+
 Route::group(['middleware' => ['auth']], function(){
 // prefixo (da url), namespace (pasta da função de callback [Admin\\StoreController@index])
 Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function(){
