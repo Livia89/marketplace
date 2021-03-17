@@ -130,7 +130,10 @@ class ProductController extends Controller
      */
     public function destroy($product)
     {
+        
         $product = $this->product->find($product);
+        $product->categories()->detach();
+        $product->images()->delete();
         $product->delete();
         
         flash("Produto excluido com sucesso")->success();

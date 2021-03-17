@@ -9,15 +9,14 @@
 
 @extends($view)
 @section('content')
-
     <div class="row">
         <div class="col-md-12">
             <h2>Carrinho de compras</h2>
         </div>
         <div class="col-12">
            @if ($cart)
-           <table class="table table-stripped">
-            <thead>
+           <table class="table table-stripped ">
+            <thead class="text-white bg-danger">
                 <tr>
                     <th>Produto</th>
                     <th>Preço</th>
@@ -51,7 +50,7 @@
                 </tr>
             </tbody>
         </table>
-        <hr>
+      
         <div class="col-md-12">
             <a href="{{route('checkout.index')}}" class="btn btn-lg btn-success pull-right">Concluir compra</a>
             <a href="{{route('cart.cancel')}}" class="btn btn-lg btn-danger pull-left">Cancelar compra</a>
