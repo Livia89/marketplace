@@ -12,8 +12,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{asset('/css/layout/structure.css')}}?<?=rand(1,99999)?>">
     <link rel="stylesheet" href="{{asset('/css/layout/style.css')}}?<?=rand(1,99999)?>">
-    <style>
-        
+    <link rel="stylesheet" href="{{asset('/css/shared.css')}}?<?=rand(1,99999)?>"><style>        
     </style>
 </head>
 <body>

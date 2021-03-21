@@ -16,12 +16,12 @@
         <div class="col col-md-4">
             <div class="card">
                 @if ($p->images->count())
-                    <img src="{{asset('storage/' . $p->images->first()->image)}}" class="card-img-top" alt="">
+                     <div class="card-img-top imagemBgDivCard height70 overflow-hidden" style='background-image: url("{{asset('storage/' . $p->images->first()->image)}}")'></div>            
                 @else
-                    <img src="{{asset('assets/imgs/no-photo.jpg')}}" class="card-img-top" alt="">    
+                    <div class="card-img-top imagemBgDivCard height70 overflow-hidden" style='background-image: url("{{asset('assets/imgs/no-photo.jpg')}}")'></div>
                 @endif
                 <div class="card-body">
-                  <h5 class="card-title">{{$p->name}}</h5>
+                  <h5 class="card-title height30">{{$p->name}}</h5>
                   <p class="card-text">{{$p->description}}</p>
                   <h4 class="text-right">{{number_format($p->price, '2', ',','.')}}€</h4>
                 </div>
