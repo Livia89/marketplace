@@ -1,0 +1,11 @@
+
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+  
+  main.container {
+    min-height: calc(100% - 256px);
+    margin: 40px auto;
+  }
+
