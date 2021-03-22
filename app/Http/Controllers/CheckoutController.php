@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
@@ -14,17 +15,20 @@ class CheckoutController extends Controller
             return redirect()->route('login');
         }
 
-        dd($this->makePagSeguroSession());
-
+       // $this->makePagSeguroSession();
+       // var_dump(session()->get('pagseguro_session_code'));
+      //  session()->forget('pagseguro_session_code');
         return view('checkout');
     }
 
     private function makePagSeguroSession(){
 
-        $sessionCode = \PagSeguro\Services\Session::create(
-            \PagSeguro\Configuration\Configure::getAccountCredentials()
-        );
+        if(!session()->has('pagseguro_session_code')){
+            $sessionCode = \PagSeguro\Services\Session::create(
+                \PagSeguro\Configuration\Configure::getAccountCredentials()
+            );
+        }
 
-        print $sessionCode->getResult();
+        return session()->put('pagseguro_session_code', $sessionCode->getResult());
     }
 }
