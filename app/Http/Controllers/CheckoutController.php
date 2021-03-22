@@ -31,4 +31,6 @@ class CheckoutController extends Controller
 
         return session()->put('pagseguro_session_code', $sessionCode->getResult());
     }
+
+    
 }
