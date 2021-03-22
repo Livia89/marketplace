@@ -13,7 +13,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="card_number">Número do cartão <br>
-                                <input class="form-control" type="text" name="card_number" id="card_number">
+                                <input class="form-control" type="text" name="card_number" id="card_number">  <span id='brand'></span>
                             </label>
                         </div>
                     </div>
@@ -44,4 +44,36 @@
             </form>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script src="https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js"></script>
+    
+    <script>
+        /* Identificando a sessão com o sessionId da pagSeguro */
+        const sessionId = '{{session()->get("pagseguro_session_code")}}';
+        PagSeguroDirectPayment.setSessionId(sessionId);
+    </script>
+
+    <script>
+        /* Pegar bandeira do cartão com helpers do pagSeguro - https://dev.pagseguro.uol.com.br/reference/checkout-transparente#checkout-transparente-gerando-uma-sessao*/
+        let cardNumber = document.querySelector("#card_number");
+        let spanBrand = document.querySelector("#brand");
+        cardNumber.addEventListener('keyup', function(){
+                if(cardNumber.value.length >= 6){
+                    PagSeguroDirectPayment.getBrand({
+                        cardBin: cardNumber.value.substr(0, 6),
+                        success: function(res){
+                            let imgFlag = `<img src="https://stc.pagseguro.uol.com.br/public/img/payment-methods-flags/68x30/${res.brand.name}.png">`;
+                            spanBrand.innerHTML = imgFlag;
+                        },
+                        error: function(error){
+                            console.log(error);
+                        },
+                        complete: function(comp){
+                        }
+                    }); /* traz as infos dos cartoões*/
+                }
+        });
+    </script>
 @endsection

@@ -21,5 +21,6 @@
         @yield('content') {{--  diretivas do blade--}}
     </main>
     @include('layouts.structure.footer')
+    @yield('scripts')
 </body>
 </html>
