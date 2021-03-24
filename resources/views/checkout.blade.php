@@ -79,7 +79,7 @@
                             getInstallments(40, res.brand.name);
                         },
                         error: function(error){
-                            console.log(error);
+                            console.log(error); 
                         },
                         complete: function(comp){
                         }

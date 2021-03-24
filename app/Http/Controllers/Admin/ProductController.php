@@ -7,6 +7,7 @@ use App\Http\Requests\ProductRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Traits\UploadTrait;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -130,13 +131,19 @@ class ProductController extends Controller
      */
     public function destroy($product)
     {
-        
         $product = $this->product->find($product);
+        $productsImg = clone $product->images()->get();
+        
         $product->categories()->detach();
-        $product->images()->delete();
+        if($product->images()->delete()){
+            foreach($productsImg as $img){
+                if(Storage::disk('public')->exists($img->image)){
+                    Storage::disk('public')->delete($img->image);
+                }
+            }
+        }
+        
         $product->delete();
-
-        /*TODO - Falta remover as imagens das pastas */ 
         
         flash("Produto excluido com sucesso")->success();
         return redirect()->route('admin.products.index');
