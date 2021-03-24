@@ -34,4 +34,26 @@
       
     @endforeach
 </div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h3>Lojas em destaque</h3>
+        <hr>
+    </div>
+    @foreach ($stores as $s)
+        
+    <div class="col-md-4 col">
+
+        @if ($s->logo)
+            <img src="{{asset('storage/'. $s->logo)}}" class='img-fluid' alt="Logo da {{$s->name}}">
+        @else
+            <img src="{{asset('storage/logo/no-logo.png')}}" class='img-fluid' alt="Sem logo">
+        @endif
+        <h3>{{$s->name}}</h3>
+        <p>
+            {{$s->description}}
+        </p>
+    </div>
+    @endforeach
+</div>
 @endsection
