@@ -5,8 +5,9 @@
         <div class="col-md-6">
             <form method="POST" action="">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-9">
                         <h2>Dados para pagamento</h2>
+                        <hr>
                     </div>
                 </div>
                 <div class="row">
@@ -14,7 +15,7 @@
                     <div class="col-md-9">
                         <div class="form-group">
                             <input class="form-control" type="text" name="card_number" id="card_number">  
-                            <input class="form-control" type="hidden" name="card_brand" id="brand">  
+                            <input class="form-control" type="hidden" name="card_brand" id="card_brand">  
                         </div>
                     </div>
                     <div class="col col-md-3"><span class='form-group' id='brand'></span> </div>
@@ -59,7 +60,6 @@
         const sessionId = '{{session()->get("pagseguro_session_code")}}';
         PagSeguroDirectPayment.setSessionId(sessionId);
         
-
     </script>
 
     <script>
@@ -74,7 +74,9 @@
                         cardBin: cardNumber.value.substr(0, 6),
                         success: function(res){
                             let imgFlag = `<img src="https://stc.pagseguro.uol.com.br/public/img/payment-methods-flags/68x30/${res.brand.name}.png">`;
+                        
                             spanBrand.innerHTML = imgFlag;
+                            console.log(spanBrand);
                             document.querySelector("input[name='card_brand']").value = res.brand.name;
                             getInstallments(40, res.brand.name);
                         },
