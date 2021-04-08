@@ -54,6 +54,7 @@
 
 @section('scripts')
     <script src="https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js"></script>
+    <script src="{{asset('assets/js/jquery.ajax.js')}}"></script>
     
     <script>
         /* Identificando a sessão com o sessionId da pagSeguro */
@@ -102,11 +103,32 @@
                 expirationMonth: document.querySelector("input[name=card_month]").value,
                 expirationYear: document.querySelector("input[name=card_year]").value,
                 success: function(res){
-                    console.log(res);
+                    proccessPayment(res.card.token)
                 }
 
             });
         });
+        
+        /* TODO- Parei aqui pois a API estava dando erro */
+
+        function proccessPayment(token){
+            let data = {
+                card_token: token,
+                hash: PagSeguroDirectPayment.getSenderHash(),
+                installment: document.querySelector(".select_installments").value,
+                _token: '{{csrf_token()}}'
+            };
+
+            $.ajax({
+                type: 'POST',
+                url: '{{route("checkout.proccess")}}',
+                data: data,
+                dataType: 'json',
+                success: function(res){
+                    console.log(res);
+                }
+            });
+        }
 
         function getInstallments(amount, brand){
             PagSeguroDirectPayment.getInstallments({
@@ -130,7 +152,7 @@
     function drawSelectInstallments(installments) {
 		let select = '<label>Opções de Parcelamento:</label>';
 
-            select += '<select class="form-select" aria-label="Default select example">';
+            select += '<select class="form-select select_installments" aria-label="Default select example">';
 
             for(let l of installments) {
                 select += `<option value="${l.quantity}|${l.installmentAmount}">${l.quantity}x de ${l.installmentAmount} - Total fica ${l.totalAmount}</option>`;

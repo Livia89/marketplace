@@ -23,6 +23,7 @@ class HomeController extends Controller
     {
         $products = $this->products->limit(6)->orderBy('id','DESC')->get();
         $stores = \App\Models\Store::limit(3)->orderBy('id','DESC')->get();
+      
         return view('welcome', compact('products', 'stores'));
     }
 

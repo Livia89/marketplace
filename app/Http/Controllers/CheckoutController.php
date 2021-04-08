@@ -21,6 +21,13 @@ class CheckoutController extends Controller
         return view('checkout');
     }
 
+    public function proccess(Request $r){
+
+        dd($r);
+
+        return;
+    }
+
     private function makePagSeguroSession(){
 
         if(!session()->has('pagseguro_session_code')){

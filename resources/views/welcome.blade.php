@@ -10,6 +10,21 @@
 @extends($view)
 
 @section('content')
+
+
+
+<div class="mb-4 row justify-content-end">
+    
+    <div class="col-md-3">
+        <select name="category" id="" class="form-select">
+            <option value="" selected>Categorias</option>
+                @foreach ($categories as $category)
+                     <option value="{{$category->slug}}">{{$category->name}}</option>
+                @endforeach
+        </select>
+    </div>
+
+</div>
 <div class="row mb-4">
     @foreach ($products as $key => $p)
         

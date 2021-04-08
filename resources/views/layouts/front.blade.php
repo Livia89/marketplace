@@ -29,7 +29,10 @@
             <li class="nav-item @if(request()->is('/')) active @endif">
                 <a class="nav-link" href="{{route('home')}}">Home <span class="sr-only">(current)</span></a>
             </li>
+           
+
         </ul>
+
 
     {{-- 
            <ul class="navbar-nav mr-auto">
